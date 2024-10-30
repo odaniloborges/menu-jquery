@@ -17,6 +17,17 @@ header {
     color: #fff;
 }
 
+.menu-hamburguer {
+    width: 32px;
+}
+
+.menu-hamburguer span {
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    display: block;
+}
+
 nav {
     background-color: #575fcf;
     padding: 16px 0;
