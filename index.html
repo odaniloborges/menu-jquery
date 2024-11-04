@@ -184,31 +184,31 @@
                     <li>
                         <div class="form-campo">
                             <label for="nome">Nome</label>
-                            <input type="text" alt="nome">
+                            <input type="text" id="nome" name="nome">
                         </div>
                     </li>
                     <li>
                         <div class="form-campo">
                             <label for="telefone">Telefone</label>
-                            <input type="tel" alt="telefone">
+                            <input type="tel" id="telefone" name="telefone">
                         </div>
                     </li>
                     <li>
                         <div class="form-campo">
                             <label for="email">E-mail</label>
-                            <input type="email" alt="email">
+                            <input type="email" id="email" name="email">
                         </div>
                     </li>
                     <li>
                         <div class="form-campo">
                             <label for="veiculo-interesse">Veiculo de interesse</label>
-                            <input type="text" alt="veiculo-interesse">
+                            <input type="text" id="veiculo-interesse" name="veiculoDeInteresse">
                         </div>
                     </li>
                     <li>
                         <div class="form-campo">
                             <label for="mensagem">Mensagem</label>
-                            <textarea alt="mensagem"></textarea>
+                            <textarea id="mensagem" name="mensagem"></textarea>
                         </div>
                     </li>
                     <button type="submit">Enviar</button>
@@ -245,11 +245,49 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/messages_pt_BR.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#carousel-images').slick({
                 autoplay:true,
                 autoplaySpeed: 1000
+            })
+
+            $('#telefone').mask('(00) 00000-0000');
+
+            $('form').validate({
+                rules: {
+                    nome: {
+                        required: true
+                    },
+                    telefone: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    mensagem: {
+                        required: true
+                    },
+                    veiculoDeInteresse: {
+                        required: false
+                    },
+                },
+                messages: {
+                    nome: 'Por favor, insira seu nome!'
+                },
+                submitHandler: function(form) {
+                    console.log('form')
+                },
+                invalidHandler: function(evento, validador) {
+                    let camposInvalidos = validador.numberOfInvalids();
+                    if (camposInvalidos) {
+                        alert(`Existem ${camposInvalidos} campos invalidos`)
+                    }
+                }
             })
 
             $('.menu-hamburguer').click(function() {
