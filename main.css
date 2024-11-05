@@ -125,6 +125,7 @@ button {
 
 .price {
     padding: 16px 0;
+    display: block;
 }
 
 .price del {
@@ -143,6 +144,8 @@ form li {
 .form-campo input,
 .form-campo textarea {
     width: 100%;
+    display: block;
+    padding: 8px;
 }
 
 .form-campo label {
