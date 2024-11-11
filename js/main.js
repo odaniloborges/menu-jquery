@@ -50,7 +50,12 @@ $(document).ready(function() {
         }, 1000)
     })
 
-    $('.menu-hamburguer').click(function() {
+    $('.menu-hamburguer').click(function(e) {
+        e.stopPropagation();
         $('nav').toggle();
+    })
+
+    $('body').on("click", function() {
+        $('nav').hide();
     })
 })
